@@ -10,11 +10,3 @@ body {
   font-size: $m-size;
   background-color: $body-darkblue;
 }
-
-button {
-  cursor: pointer; 
-}
-
-button:disabled {
-  cursor: default;
-}
