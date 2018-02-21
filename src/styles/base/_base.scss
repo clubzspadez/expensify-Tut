@@ -1,0 +1,20 @@
+// this a partial file
+//REM better support for accessibility 
+// 1rem === 16px;
+
+html {
+  font-size: 62.5%;
+}
+body {
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: $m-size;
+  background-color: $body-darkblue;
+}
+
+button {
+  cursor: pointer; 
+}
+
+button:disabled {
+  cursor: default;
+}
