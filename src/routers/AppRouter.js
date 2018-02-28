@@ -7,6 +7,8 @@ import EditPage from '../components/EditPage';
 import HelpPage from '../components/HelpPage';
 import NotFound from '../components/NotFound';
 
+
+// :id used to created key value pairs
 const AppRouter = (props) => (
   <BrowserRouter>
   <div>
@@ -14,7 +16,7 @@ const AppRouter = (props) => (
     <Switch>
       <Route exact={true} path="/" component={App}/>
       <Route path="/create" component={Create} />
-      <Route path="/edit" component={EditPage} />
+      <Route path="/edit/:id" component={EditPage} />
       <Route path="/help" component={HelpPage} />
       <Route component={NotFound} />
     </Switch>

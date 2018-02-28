@@ -5,13 +5,5 @@ import AppRouter from './routers/AppRouter.js';
 import 'normalize.css/normalize.css';
 import './styles/styles.scss';
 
-// defining our routes in jsx
-const NotFound = () => (
-  <div>
-  {/* Helps with client side rendering */}
-   404 - <Link to="/">Home Page</Link>
-  </div>
-);
 
-
-ReactDOM.render(<AppRouter notFound={NotFound}/>, document.getElementById('app'));
+ReactDOM.render(<AppRouter />, document.getElementById('app'));
