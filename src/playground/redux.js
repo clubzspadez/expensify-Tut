@@ -1,58 +1,55 @@
-import { createStore } from 'redux';
+import { createStore } from "redux";
 
 //!Action generators - functions that return action objects
 
 const incrementCount = ({ incrementBy = 1 } = {}) => ({
-  type: 'INCREMENT',
+  type: "INCREMENT",
   incrementBy
 });
 
 const decrementBy = ({ decrementBy = 1 } = {}) => ({
-  type: 'DECREMENT',
+  type: "DECREMENT",
   decrementBy
 });
 
 const setCount = ({ setCount = 0 } = {}) => ({
-  type: 'SET',
+  type: "SET",
   setCount
 });
 
 const resetCount = () => ({
-  type: 'RESET'
+  type: "RESET"
 });
 
 //* Reducers
 //! 1. Reducers are pure functions(not interacting or changing things from outside its scope)
-//! 2. Never change state or action 
+//! 2. Never change state or action
 
 const countReducer = (state = { count: 0 }, action) => {
   switch (action.type) {
-    case 'INCREMENT':
+    case "INCREMENT":
       return {
         count: state.count + action.incrementBy
       };
-    case 'DECREMENT':
+    case "DECREMENT":
       return {
         count: state.count - action.decrementBy
       };
-    case 'RESET':
+    case "RESET":
       return {
         count: 0
       };
-    case 'SET':
+    case "SET":
       return {
         count: action.setCount
-      }
+      };
     default:
       return state;
   }
 };
 
-
 //*pass in a function(reducer)
 const store = createStore(countReducer);
-
-
 
 // //subscribe will listen to changes in our store
 // store.subscribe(() => {
@@ -74,4 +71,3 @@ store.dispatch(setCount({ setCount: 100 }));
 store.dispatch(resetCount());
 
 store.dispatch(decrementBy({ decrementBy: 10 }));
-
