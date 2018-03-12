@@ -171,6 +171,17 @@ const filtersReducer = (state = filtersReducerDefaultState, action) => {
   }
 };
 
+const getVisibileExpenses = (expenses , { text , sortBy, startDate, endDate }) => {
+  return expenses.filter((expense) => {
+    const startDateMatch = startDate;
+    const endDateMatch = endDate;
+    const textMatch = text;
+
+    return startDateMatch && endDateMatch && textMatch;
+
+  });
+};
+
 //* store creation
 const store = createStore(
   combineReducers({
@@ -179,7 +190,9 @@ const store = createStore(
   })
 );
 store.subscribe(() => {
-  console.log(store.getState());
+  const state  = store.getState();
+  const visibileExpenses = getVisibileExpenses(state.expenses, state.filters);
+  console.log(visibileExpenses);
 });
 
 const expenseOne = store.dispatch(
@@ -199,9 +212,9 @@ const expenseTwo = store.dispatch(
 
 // store.dispatch(sortByDate('2/2/12'));
 
-store.dispatch(setStartDate());
+// store.dispatch(setStartDate(8202012));
 
-store.dispatch(setEndDate());
+// store.dispatch(setEndDate(10202012));
 // store.dispatch(sortByAmount({ sortBy: expenseOne.expense.amount }));
 
 // const demoState = {
