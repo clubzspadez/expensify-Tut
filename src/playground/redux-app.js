@@ -78,15 +78,13 @@ const editExpense = (id , updates) => ({
 });
 
 // SORT_BY_AMOUNT
-const sortByAmount = ( amount = '') => ({
-  type: "SORT_BY_AMOUNT",
-  amount
+const sortByAmount = () => ({
+  type: "SORT_BY_AMOUNT"
 });
 
 // SORT_BY_DATE
-const sortByDate = ( date = '') => ({
-  type: "SORT_BY_DATE",
-  date
+const sortByDate = () => ({
+  type: "SORT_BY_DATE"
 });
 
 // SET_TEXT_FILTER
@@ -149,12 +147,12 @@ const filtersReducer = (state = filtersReducerDefaultState, action) => {
     case "SORT_BY_AMOUNT":
       return {
         ...state,
-        sortBy: action.amount
+        sortBy: 'amount'
       };
     case "SORT_BY_DATE":
     return {
       ...state,
-      sortBy: action.date
+      sortBy: 'date'
     }
     case "SET_START_DATE":
     return {
@@ -173,12 +171,18 @@ const filtersReducer = (state = filtersReducerDefaultState, action) => {
 
 const getVisibileExpenses = (expenses , { text , sortBy, startDate, endDate }) => {
   return expenses.filter((expense) => {
-    const startDateMatch = startDate;
-    const endDateMatch = endDate;
-    const textMatch = text;
+    const startDateMatch = typeof startDate !== 'number' || expense.createdAt >= startDate;
+    const endDateMatch = typeof startDate !== 'number' || expense.createdAt <= endDate;
+    const textMatch = expense.description.toLowerCase().includes(text.toLowerCase());
 
     return startDateMatch && endDateMatch && textMatch;
 
+  }).sort((a , b ) => {  
+    if (sortBy === 'date'){
+       return a.createdAt < b.createdAt ? 1 : -1 ;
+    } else if (sortBy === 'amount'){
+      return a.amount < b.amount ? 1 : -1 ;
+    }
   });
 };
 
@@ -196,10 +200,10 @@ store.subscribe(() => {
 });
 
 const expenseOne = store.dispatch(
-  addExpense({ description: "rent", amount: 1 })
+  addExpense({ description: "rent", amount: 99 })
 );
 const expenseTwo = store.dispatch(
-  addExpense({ description: "Coffee", amount: 100 })
+  addExpense({ description: "Coffee", amount: 2000 })
 );
 
 // store.dispatch(removeExpense({ id: expenseTwo.expense.id } ));
@@ -208,7 +212,7 @@ const expenseTwo = store.dispatch(
 
 // store.dispatch(setTextFilter('rent'));
 
-// store.dispatch(sortByAmount('1000'));
+store.dispatch(sortByAmount());
 
 // store.dispatch(sortByDate('2/2/12'));
 
@@ -225,7 +229,14 @@ const expenseTwo = store.dispatch(
 //       note: "Fill with personal notes",
 //       amount: 10000,
 //       createdAt: 0
-//     }
+//     },
+    // {
+  //       id: "231",
+  //       description: "Put in here",
+  //       note: "Fill with personal notes",
+  //       amount: 10000,
+  //       createdAt: 0
+  //     }
 //   ],
 //   filters: {
 //     text: "rent",
