@@ -46,4 +46,4 @@ const AuthInfo = requireAuthentication(Info);
 // setup authinfo to show if user is authenticated or when they are not 
 
 
-ReactDOM.render(<AuthInfo isAuthenticated={true} info= "Gerald is gay"/>, document.getElementById('app'));
+ReactDOM.render(<AuthInfo isAuthenticated={true} info= "Geralds personal info!"/>, document.getElementById('app'));
