@@ -1,7 +1,7 @@
 import React from 'react';
 import { BrowserRouter, Route, Switch, Link, NavLink }  from 'react-router-dom';
 import Header from '../components/Header';
-import App from '../components/App';
+import ExpenseDashBoard from '../components/ExpenseDashBoard';
 import Create from '../components/Create';
 import EditPage from '../components/EditPage';
 import HelpPage from '../components/HelpPage';
@@ -14,7 +14,7 @@ const AppRouter = (props) => (
   <div>
   <Header />
     <Switch>
-      <Route exact={true} path="/" component={App}/>
+      <Route exact={true} path="/" component={ExpenseDashBoard}/>
       <Route path="/create" component={Create} />
       <Route path="/edit/:id" component={EditPage} />
       <Route path="/help" component={HelpPage} />

@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { BrowserRouter, Route, Switch, Link, NavLink }  from 'react-router-dom';
+import { Provider } from 'react-redux';
 import AppRouter from './routers/AppRouter.js';
 import configureStore from './store/configureStore';
 import getVisibileExpenses from './selectors/expenses';
@@ -20,9 +20,13 @@ store.subscribe(()=>{
 });
 
 store.dispatch(addExpense({ description: 'Water Bill'}));
-
 store.dispatch(addExpense({ description: 'Gas Bill'}));
-
 store.dispatch(setTextFilter('water'));
 
-ReactDOM.render(<AppRouter />, document.getElementById('app'));
+const render = (
+<Provider store={store}>
+    <AppRouter />
+  </Provider>
+  );
+
+ReactDOM.render(render, document.getElementById('app'));
