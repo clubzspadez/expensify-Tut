@@ -1,18 +1,23 @@
 import React from 'react';
 //grabs store from redux 
 import { connect } from 'react-redux';
+import ExpenseListItem from './ExpenseListItem';
+import selectExpenses from '../selectors/expenses.js';
 
 const ExpenseList = (props) => (
   <div>
     <p>Expense List</p>
-    {props.expenses.length}
+    { 
+      props.expenses.map((expense) =>  
+        <ExpenseListItem {...expense} key={expense.id} />)
+    }
   </div>
 );
 
 const mapStateToProps = (state) => {
   return {
-    expenses: state.expenses
+    expenses: selectExpenses(state.expenses, state.filters)
   }
 };
 
-export default ConnectedExpenseList = connect(mapStateToProps)(ExpenseList);
+export default connect(mapStateToProps)(ExpenseList);
