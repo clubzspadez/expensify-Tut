@@ -11,16 +11,16 @@ import NotFound from '../components/NotFound';
 // :id used to created key value pairs
 const AppRouter = (props) => (
   <BrowserRouter>
-  <div>
-  <Header />
-    <Switch>
-      <Route exact={true} path="/" component={ExpenseDashBoard}/>
-      <Route path="/create" component={Create} />
-      <Route path="/edit/:id" component={EditPage} />
-      <Route path="/help" component={HelpPage} />
-      <Route component={NotFound} />
-    </Switch>
-  </div>
+    <div>
+    <Header />
+      <Switch>
+        <Route exact={true} path="/" component={ExpenseDashBoard}/>
+        <Route path="/create" component={Create} />
+        <Route path="/edit/:id" component={EditPage} />
+        <Route path="/help" component={HelpPage} />
+        <Route component={NotFound} />
+      </Switch>
+    </div>
   </BrowserRouter>
 );
 
