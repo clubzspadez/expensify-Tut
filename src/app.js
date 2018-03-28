@@ -19,9 +19,8 @@ store.subscribe(()=>{
 
 });
 
-store.dispatch(addExpense({ description: 'Water Bill', amount: 500}));
-store.dispatch(addExpense({ description: 'Gas Bill', amount: 1000}));
-store.dispatch(setTextFilter('water'));
+store.dispatch(addExpense({ description: 'Water Bill', amount: 500, createdAt: 5000}));
+store.dispatch(addExpense({ description: 'Gas Bill', amount: 1000, createdAt: 1000}));
 
 const render = (
 <Provider store={store}>
