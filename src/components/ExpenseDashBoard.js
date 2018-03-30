@@ -5,7 +5,9 @@ import ExpenseListFilters from './ExpenseListFilters';
 const ExpenseDashBoard = () => (
   <div>
     <p>DashBoard Component</p>
+    {/* Selector to fitler by */}
     <ExpenseListFilters />
+    {/* Display Current ExpenseList */}
     <ExpenseList />
   </div>
 );
