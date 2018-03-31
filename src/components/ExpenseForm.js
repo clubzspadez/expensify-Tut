@@ -1,16 +1,26 @@
+import 'react-dates/initialize';
 import React from 'react';
+import moment from 'moment';
 import { SingleDatePicker } from 'react-dates';
+import 'react-dates/lib/css/_datepicker.css';
 
 // set note state, amount state, textarea 
 // set onchange for note, amount, text area
 // 
 
+const now = moment();
+
+console.log(now.format('MMM, Do, YYYY'));
+
 class ExpenseForm extends React.Component {
+
   state = {
     description : '',
     amount: '',
-    note: ''
-  };
+    note: '',
+    createdAt: moment(),
+    focused: false
+  }
 
   onDescriptionChange = (e) => {
     const value = e.target.value;
@@ -30,6 +40,13 @@ class ExpenseForm extends React.Component {
     this.setState(() => ({ note: value })); 
   };
 
+  onDateChange = (createdAt) => {
+    this.setState( () => ({ createdAt }));
+  }
+
+  onFocusChange = ({ focused}) => {
+    this.setState( () => ({ focused }))
+  }
   handleSubmit (e){
     alert('Submit is working');
     e.preventDefault();
@@ -42,6 +59,13 @@ class ExpenseForm extends React.Component {
         <form action="" onSubmit={this.handleSubmit}>
         <input type="text" placeholder="Description" autoFocus value={this.state.description} onChange={this.onDescriptionChange}/>
         <input type="text" placeholder="Amount" autoFocus value={this.state.amount} onChange={this.onAmountChange} />
+        <SingleDatePicker
+          date={this.state.createdAt} 
+          onDateChange={this.onDateChange} 
+          focused={this.state.focused} 
+          onFocusChange={this.onFocusChange}
+          isOutsideRange={() => false }
+        />
         <textarea name="" id="" placeholder="Add notes" value={this.state.note} onChange={this.onNoteChange} ></textarea>
         <button disabled="">Add Expense</button>
         </form>
