@@ -1,4 +1,5 @@
 import React from 'react';
+import { SingleDatePicker } from 'react-dates';
 
 // set note state, amount state, textarea 
 // set onchange for note, amount, text area
