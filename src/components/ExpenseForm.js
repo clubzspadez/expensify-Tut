@@ -18,9 +18,9 @@ class ExpenseForm extends React.Component {
 
     this.state = {
         description: props.expense.description ? props.expense.description : '' ,
-        amount: props.expense.amount ? (props.expense.amount / 100) : '' ,
+        amount: props.expense.amount ? (props.expense.amount / 100).toString() : '' ,
         note: props.expense.note ? props.expense.note : '' ,
-        createdAt: moment(),
+        createdAt: props.expense.createdAt ? props.expense.createdA : moment(),
         focused: false,
         error: ''
     }

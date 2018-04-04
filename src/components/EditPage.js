@@ -6,7 +6,9 @@ const EditPage = (props) => {
   console.log(props);
   return(
     <div>
-    <ExpenseForm expense={props.expense}/>
+    <ExpenseForm expense={props.expense} onSubmit={(expense) => {
+      console.log(expense);
+    }}/>
       <p>This is the edit page</p>
       <p>Current params id: {props.match.params.id}</p>
     </div>
