@@ -1,3 +1,4 @@
+// PREP FILTERS REDUCER TO USE A START DATE FOR BEGINNING OF THE MONTH TO END OF MONTH
 const filtersReducerDefaultState = {
   text: "",
   sortBy: "",
