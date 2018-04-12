@@ -1,9 +1,10 @@
+import moment from 'moment';
 // PREP FILTERS REDUCER TO USE A START DATE FOR BEGINNING OF THE MONTH TO END OF MONTH
 const filtersReducerDefaultState = {
   text: "",
   sortBy: "",
-  startDate: undefined,
-  endDate: undefined
+  startDate: moment().startOf('month'),
+  endDate: moment().endOf('month')
 };
 
 export default (state = filtersReducerDefaultState, action) => {
