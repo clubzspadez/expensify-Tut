@@ -14,3 +14,7 @@ body {
 .is-active {
   font-weight: bold;
 }
+
+*, *:before, *:after {
+  box-sizing: border-box;
+}

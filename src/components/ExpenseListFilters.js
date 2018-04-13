@@ -19,8 +19,8 @@ class ExpenseListFilters extends React.Component{
     this.props.dispatch(setEndDate(endDate));
   }
 
-  handleFocus = (focusedInput) => {
-    this.setState(() => ({ focusedInput }));
+  handleFocus = (calendarFocused) => {
+    this.setState(() => ({ calendarFocused }));
   }
   render(){
     return (
